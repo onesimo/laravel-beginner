@@ -73,4 +73,19 @@ DB::table('users')->whereNull('remember_token')->get()
 
 DB::table('users')->whereNotNull('remember_token')->get()
 
+DB::table('users')->where('id',1)->orWhere(function ($query) { $query->whereNotNull('created_at'); })->get()
+
+JOINs
+
+DB::table('users')->join('post', 'users.id', '=','post.id_user')->get()
+
+DB::table('users')->join('post', 'users.id', '=','post.id_user')->select('users.name','post.content')->get()
+
+DB::table('users')->leftjoin('post', 'users.id', '=','post.id_user')->select('users.name','post.content')->get()
+
+DB::table('users')->rightjoin('post', 'users.id', '=','post.id_user')->select('users.name','post.content')->get()
+
+$first = DB::table('users')->whereNull('created_at')->get()
+DB::table('post')->whereNull('updated_at')->union($first)->get()
+
 */
