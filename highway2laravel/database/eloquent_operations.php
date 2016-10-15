@@ -88,4 +88,35 @@ DB::table('users')->rightjoin('post', 'users.id', '=','post.id_user')->select('u
 $first = DB::table('users')->whereNull('created_at')->get()
 DB::table('post')->whereNull('updated_at')->union($first)->get()
 
+DB::table('users')->join('post', function ($join){$join->on('users.id','=','post.id_user')->whereNotNull('post.content');})->select('users.name','post.content')->get()
+
+
+ELOQUENT
+
+php artisan make:model Pessoa --migration  | this will create a model and migration
+
+
+$instance->save()
+
+App\Pessoa::all() 
+
+App\Pessoas::where('sex','male')->get()
+
+App\Pessoas::where('sex','male')->first()
+
+App\Pessoas::where('sex','male')->orderBy('created_at','desc')->get()
+
+App\Pessoas::find(1)
+
+Update
+$pessoa = App\Pessoas::find(1)
+$pessoa->save()
+
+Delete
+$pessoa = App\Pessoas::find(1)
+$pessoa->delete()
+
+To get an error
+$pessoa = App\Pessoas::findOrFail(0)
+
 */
