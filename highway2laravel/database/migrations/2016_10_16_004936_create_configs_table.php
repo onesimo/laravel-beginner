@@ -14,14 +14,14 @@ class CreateConfigsTable extends Migration
     public function up()
     {
         Schema::create('configs', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned;
+            //$table->integer('user_id')->unsigned;
+            $table->unsignedInteger('User_id');
             $table->boolean('notify');
             $table->string('theme');
-            $table->timestamps();
 
             $table->primary('user_id');
-/*
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');*/
+ 
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
