@@ -19,6 +19,7 @@ class CreatePessoasTable extends Migration
             $table->text('obs');
             $table->enum('sex',['male','female']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

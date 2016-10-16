@@ -119,4 +119,8 @@ $pessoa->delete()
 To get an error
 $pessoa = App\Pessoas::findOrFail(0)
 
+$user = App\User::create(['name'=>'Onesimo', 'email'=>'onesimobat@gmail','password'=>bcrypt('password')])
+
+Without defined scopes
+App\Pessoas::withoutGlobalScopes(['created_at'])->get()
 */

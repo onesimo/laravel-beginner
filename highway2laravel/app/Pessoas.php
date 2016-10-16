@@ -2,7 +2,10 @@
 
 namespace App;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pessoas extends Model
 {	
@@ -15,7 +18,11 @@ class Pessoas extends Model
 
     protected $guarded = ['id','created_at','updated_at'];
 
-    protected $casts [
+    protected $dates = ['created_at','updated_at','delete_at'];
+
+    use SoftDeletes;
+
+    protected $casts = [
     	'name' => 'string',
     	'obs' => 'string'
     ];
@@ -28,5 +35,19 @@ class Pessoas extends Model
     public function getNameAttribute($value)
     {
     	return strtolower($value);
+    }
+
+    protected static function boot()
+    {
+    	parent::boot();
+
+    	static::addGlobalScope('created_at', function(Builder $builder){
+    		$builder->where('created_at', '<',Carbon::now()->format('Y-m-d H:i:s'));
+    	});
+    }
+
+    public function scopeOfType($query, $type)
+    {
+    	return $query->where('sex', $type);
     }
 }
