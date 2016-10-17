@@ -138,5 +138,10 @@ One to One
 $user = App\User::find(1)
 $user->config()->create(['notify'=>true,'theme'=>'blue'])
 
+Many to Many
+
+$post->tags()->attach([1,1])
+$post->tags()->deattach([1,1])
+$post->tags()->sync([1])
 
 */
