@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdatePostsTable extends Migration
+class CreateTagsTables extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class UpdatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            //$table->text('content')->change();
+        Schema::create('tags', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
         });
     }
 
@@ -25,8 +26,6 @@ class UpdatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            //$table->string('content')->change();
-        });
+        Schema::dropIfExists('tags');
     }
 }

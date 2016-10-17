@@ -15,12 +15,10 @@ class CreateConfigsTable extends Migration
     {
         Schema::create('configs', function (Blueprint $table) {
             //$table->integer('user_id')->unsigned;
-            $table->unsignedInteger('User_id');
+            $table->unsignedInteger('user_id');
             $table->boolean('notify');
             $table->string('theme');
-
             $table->primary('user_id');
- 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }

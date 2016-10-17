@@ -123,4 +123,20 @@ $user = App\User::create(['name'=>'Onesimo', 'email'=>'onesimobat@gmail','passwo
 
 Without defined scopes
 App\Pessoas::withoutGlobalScopes(['created_at'])->get()
+
+App\Pessoas::withTrashed()->get()
+
+App\Pessoas::onlyTrashed()->get()
+
+To restore a data trashed 
+$pessoa = App\Pessoas::withTrashed()->find(1)
+$pessoa->restore()
+
+
+One to One
+
+$user = App\User::find(1)
+$user->config()->create(['notify'=>true,'theme'=>'blue'])
+
+
 */
