@@ -27,9 +27,20 @@ Route::any('any',function(){
 
 
 Route::group(['middleware' => ['web']], function(){
- 
-
+ 	
+ 	
+ 	Route::group(['prefix' => 'auth/github'], function () {
+ 		Route::get('/','GithubController@redirect');
+ 		Route::get('callback', 'GithubController@handle');
+ 	});
+	
+	/*
 	Route::get('/', function () {
+	    return view('welcome');
+
+	});
+	
+	/*Route::get('/', function () {
 	    return view('welcome');
 
 	});
@@ -50,7 +61,7 @@ Route::group(['middleware' => ['web']], function(){
 		Route::post('/add', ['uses' => 'UserController@store']);
 		Route::get('{id}', ['uses' => 'UserController@show']);
 		
-	});
+	});*/
 
 });
 Auth::routes();
