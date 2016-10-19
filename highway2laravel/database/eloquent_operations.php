@@ -144,4 +144,5 @@ $post->tags()->attach([1,1])
 $post->tags()->deattach([1,1])
 $post->tags()->sync([1])
 
+
 */
