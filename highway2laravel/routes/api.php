@@ -22,7 +22,7 @@ Route::group(['middleware' => ['api', 'auth:api']], function(){
 });
 */
 Route::get('/dashboard', function (Request $request) {
-    return $request->user();
+    //return $request->user();
 })->middleware('auth:api');
 
 Route::get('/user', function (Request $request) {
