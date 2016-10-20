@@ -12,7 +12,7 @@
 */
 
 
-Route::post('post',function(){
+/*Route::post('post',function(){
 	echo "hello word";
 });
 
@@ -23,24 +23,30 @@ Route::match(['get','post'],'foo',function(){
 
 Route::any('any',function(){
 	return 'hello';
-});
+});*/
 
 
 Route::group(['middleware' => ['web']], function(){
+	Route::get('dashboard', function(){
+		return 'You are authenticated via token';
+	});
+});
+
+/* Route::group(['middleware' => ['web']], function(){
  	
  	
  	Route::group(['prefix' => 'auth/github'], function () {
  		Route::get('/','GithubController@redirect');
  		Route::get('callback', 'GithubController@handle');
  	});
+	 
 	
-	/*
 	Route::get('/', function () {
 	    return view('welcome');
 
 	});
 	
-	/*Route::get('/', function () {
+	Route::get('/', function () {
 	    return view('welcome');
 
 	});
@@ -61,9 +67,10 @@ Route::group(['middleware' => ['web']], function(){
 		Route::post('/add', ['uses' => 'UserController@store']);
 		Route::get('{id}', ['uses' => 'UserController@show']);
 		
-	});*/
+	});
 
 });
-Auth::routes();
+*/
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
