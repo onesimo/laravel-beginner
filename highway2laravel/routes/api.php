@@ -21,7 +21,7 @@ Route::group(['middleware' => ['api', 'auth:api']], function(){
 	});
 });
 */
-Route::get('/dashboard', function (Request $request) {
+Route::get('/test', function (Request $request) {
     //return $request->user();
 })->middleware('auth:api');
 
