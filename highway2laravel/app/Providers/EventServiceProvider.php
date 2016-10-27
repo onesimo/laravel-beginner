@@ -13,9 +13,13 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\UserCreateEvent' => [
+       /* 'App\Events\UserCreateEvent' => [
             'App\Listeners\SendConfirmationEmailListener',
-        ],
+        ],*/
+    ];
+
+    protected $subscribe = [
+        'App\Listeners\UserEventListener',
     ];
 
     /**

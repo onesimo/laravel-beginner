@@ -9,9 +9,9 @@ class UserEventListener
 		var_dump('user created');
 	}
 
-	public function subscribe($event)
+	public function subscribe($events)
 	{
-		$event->listen(
+		$events->listen(
 			'App\Events\userCreatedEvent',
 			'App\Listeners\UserEventListener@userCreated'
 		);
